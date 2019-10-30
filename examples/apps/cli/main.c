@@ -50,15 +50,6 @@
 
 #include <openthread/dataset_ftd.h>
 
-#if OPENTHREAD_EXAMPLES_POSIX
-#include <setjmp.h>
-#include <unistd.h>
-
-jmp_buf gResetJump;
-
-void __gcov_flush();
-#endif
-
 #define UDP_PORT 1212
 
 static const char UDP_DEST_ADDR[] = "ff03::1";
@@ -67,6 +58,17 @@ static const char UDP_PAYLOAD[]   = "Hello OpenThread World!";
 void OTCALL handleNetifStateChanged(uint32_t aFlags, void *aContext);
 
 static void setNetworkConfiguration(otInstance *aInstance);
+
+
+
+#if OPENTHREAD_EXAMPLES_POSIX
+#include <setjmp.h>
+#include <unistd.h>
+
+jmp_buf gResetJump;
+
+void __gcov_flush();
+#endif
 
 #if OPENTHREAD_CONFIG_MULTIPLE_INSTANCE_ENABLE
 void *otPlatCAlloc(size_t aNum, size_t aSize)
