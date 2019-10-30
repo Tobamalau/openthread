@@ -114,6 +114,7 @@ NORDICSEMI_COMMON_SOURCES                                                       
     nrfx/drivers/src/nrfx_systick.c                                                                                       \
     nrfx/hal/nrf_nvmc.c                                                                                                   \
     nrfx/soc/nrfx_atomic.c                                                                                                \
+    nrfx/drivers/src/nrfx_gpiote.c                                                                                        \
     $(NULL)
 
 NORDICSEMI_USB_SOURCES                                                                                                  = \

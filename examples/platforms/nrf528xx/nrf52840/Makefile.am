@@ -93,6 +93,7 @@ PLATFORM_COMMON_SOURCES                                                         
     src/temp.c                                                                                               \
     src/uart.c                                                                                               \
     src/usb-cdc-uart.c                                                                                       \
+    src/gpio.c 	                                                                                             \
     $(NULL)
 
 SINGLEPHY_SOURCES                                                                                          = \
