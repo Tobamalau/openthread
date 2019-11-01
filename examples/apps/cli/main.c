@@ -55,7 +55,7 @@
 static const char UDP_DEST_ADDR[] = "ff03::1";
 static const char UDP_PAYLOAD[]   = "Hello OpenThread World!";
 
-void OTCALL handleNetifStateChanged(uint32_t aFlags, void *aContext);
+void handleNetifStateChanged(uint32_t aFlags, void *aContext);
 
 static void setNetworkConfiguration(otInstance *aInstance);
 
@@ -230,7 +230,7 @@ void setNetworkConfiguration(otInstance *aInstance)
 #endif
 }
 
-void OTCALL handleNetifStateChanged(uint32_t aFlags, void *aContext)
+void handleNetifStateChanged(uint32_t aFlags, void *aContext)
 {
    if ((aFlags & OT_CHANGED_THREAD_ROLE) != 0)
    {
@@ -284,7 +284,7 @@ void initUdp(otInstance *aInstance)
     memset(&listenSockAddr, 0, sizeof(listenSockAddr));
 
     listenSockAddr.mPort    = UDP_PORT;
-    listenSockAddr.mScopeId = OT_NETIF_INTERFACE_ID_THREAD;
+   // listenSockAddr.mScopeId = OT_NETIF_INTERFACE_ID_THREAD;
 
     otUdpOpen(aInstance, &sUdpSocket, handleUdpReceive, aInstance);
     otUdpBind(&sUdpSocket, &listenSockAddr);
@@ -305,7 +305,7 @@ void sendUdp(otInstance *aInstance)
     otIp6AddressFromString(UDP_DEST_ADDR, &destinationAddr);
     messageInfo.mPeerAddr    = destinationAddr;
     messageInfo.mPeerPort    = UDP_PORT;
-    messageInfo.mInterfaceId = OT_NETIF_INTERFACE_ID_THREAD;
+   // messageInfo.mInterfaceId = OT_NETIF_INTERFACE_ID_THREAD;
 
     message = otUdpNewMessage(aInstance, NULL);
     otEXPECT_ACTION(message != NULL, error = OT_ERROR_NO_BUFS);
